@@ -1,2 +1,1 @@
-# shoppy-redux
-shoppy-redux
+# shoppy
