@@ -72,7 +72,7 @@ export const handleDuplicateIdCheck = (idRef, pwdRef, idMsgRef, setIdCheckResult
     } else {
         /** 아이디 중복 체크 <--> 서버 연동 */
         axios
-            .post('http://localhost:9000/member/idcheck', {"id":idRef.current.value})
+            .post('http://43.200.183.25:9000/member/idcheck', {"id":idRef.current.value})
             .then(res => {
                 if(res.data.result === 1) {
                     alert("이미 사용중인 아이디 입니다. 새로운 아이디를 입력해주세요.");

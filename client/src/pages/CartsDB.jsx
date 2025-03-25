@@ -26,7 +26,7 @@ export default function Carts({refreshStorage}) {
     useEffect(()=>{
         if(pids.length > 0){
             axios
-            .post("http://localhost:9000/product/cartItems", {"pids" : pids})
+            .post("http://43.200.183.25:9000/product/cartItems", {"pids" : pids})
             .then(res =>{
                 //cartItems에 res.data의 정보 추가
                 const updateCartList = cartList.map((item, i) => {
@@ -62,7 +62,7 @@ export default function Carts({refreshStorage}) {
         //1. 로그인 여부 체크
         if (isLoggedIn) {
             axios
-                .post("http://localhost:9000/cart/add", formData)
+                .post("http://43.200.183.25:9000/cart/add", formData)
                 .then((res) => {
                     // console.log(res.data)
                     if (res.data.result_rows) {

@@ -32,7 +32,7 @@ export default function Signup() {
                 //서버 --> DB 테이블에 insert
                 //GET : URL 통해 호출 및 데이터 전달 => 패킷의 Header => req.params, 보안필요X, 작은데이터
                 //POST : URL 주소로 경로 호출, 데이터 전달 => 패킷의 Body => req.body, 보안필요O, 큰데이터
-                axios.post('http://localhost:9000/member/signup', formData)
+                axios.post('http://43.200.183.25:9000/member/signup', formData)
                         .then(res => {
                             if(res.data.result_rows === 1){
                                 alert("회원가입에 성공하셨습니다.");

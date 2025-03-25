@@ -13,7 +13,7 @@ export const getCartItems = async({pids}) => {
                 pname,
                 price,
                 description,
-                concat('http://localhost:9000/',upload_file->>'$[0]') as image
+                concat('http://43.200.183.25:9000/',upload_file->>'$[0]') as image
         from shoppy_product
         where pid in (${strArray.join(",")})
     `;    
@@ -36,14 +36,14 @@ export const getProduct = async(pid) => {
                 upload_file as uploadFile, 
                 source_file as sourceFile,
                 pdate,
-                concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+                concat('http://43.200.183.25:9000/',upload_file->>'$[0]') as image,
                 json_array(
-                    concat('http://localhost:9000/',upload_file->>'$[0]'),
-                    concat('http://localhost:9000/',upload_file->>'$[1]'),
-                    concat('http://localhost:9000/',upload_file->>'$[2]')
+                    concat('http://43.200.183.25:9000/',upload_file->>'$[0]'),
+                    concat('http://43.200.183.25:9000/',upload_file->>'$[1]'),
+                    concat('http://43.200.183.25:9000/',upload_file->>'$[2]')
                 ) as imgList,
                 json_arrayagg(
-                            concat('http://localhost:9000/', jt.filename)
+                            concat('http://43.200.183.25:9000/', jt.filename)
                         ) as detailImgList
         from shoppy_product,
             json_table(shoppy_product.upload_file,'$[*]' 
@@ -68,7 +68,7 @@ export const getList = async() => {
                 pname as name,
                 price,
                 description as info,
-                concat('http://localhost:9000/', upload_file->>'$[0]') as image,
+                concat('http://43.200.183.25:9000/', upload_file->>'$[0]') as image,
                 source_file,
                 pdate
         from shoppy_product

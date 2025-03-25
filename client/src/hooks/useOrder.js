@@ -39,7 +39,7 @@ export function useOrder() {
         //     window.location.href = result.data.next_redirect_pc_url;
         // }
         try {
-            const result = await axios.post("http://localhost:9000/order/add", formData);
+            const result = await axios.post("http://43.200.183.25:9000/order/add", formData);
         //     // window.location.href = response.data.next_redirect_pc_url;
 
             if (result.data.result_rows) {
@@ -72,7 +72,7 @@ export function useOrder() {
                             orderList:orderList
                         };
 
-        const response = await axios.post("http://localhost:9000/payment/qr", {
+        const response = await axios.post("http://43.200.183.25:9000/payment/qr", {
                         id:id,
                         item_name: pname,
                         total_amount: totalPrice, // 결제 금액 (KRW)
@@ -92,7 +92,7 @@ export function useOrder() {
      */
     const getOrderList = async() => {
         const id = localStorage.getItem("user_id");
-        const result = await axios.post("http://localhost:9000/order/all", {"id": id});  
+        const result = await axios.post("http://43.200.183.25:9000/order/all", {"id": id});  
 console.log('order list-->', result.data);
         setOrderList(result.data);
         setMember(result.data[0]);

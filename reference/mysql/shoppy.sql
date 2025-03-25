@@ -60,14 +60,14 @@ select  pid,
 		pname as name,
 		price,
 		description as info,
-		concat('http://localhost:9000/', upload_file->>'$[0]') as image,
+		concat('http://43.200.183.25:9000/', upload_file->>'$[0]') as image,
 		source_file,
 		pdate
 from shoppy_product;
 
--- http://localhost:9000/["upload_files\\1739163158340-849078071-1.webp", "upload_files\\1739163158340-911632745-2.webp", "upload_files\\1739163158340-462908659-3.webp", "upload_files\\1739163158341-81325715-4.webp", "upload_files\\1739163158342-709014159-5.webp", "upload_files\\1739163158342-110372512-6.webp", "upload_files\\1739163158342-207791282-7.webp"]
+-- http://43.200.183.25:9000/["upload_files\\1739163158340-849078071-1.webp", "upload_files\\1739163158340-911632745-2.webp", "upload_files\\1739163158340-462908659-3.webp", "upload_files\\1739163158341-81325715-4.webp", "upload_files\\1739163158342-709014159-5.webp", "upload_files\\1739163158342-110372512-6.webp", "upload_files\\1739163158342-207791282-7.webp"]
 --
--- http://localhost:9000/upload_files\\1739163158340-849078071-1.webp
+-- http://43.200.183.25:9000/upload_files\\1739163158340-849078071-1.webp
 
 delete from shoppy_product where pid in (6, 7, 8);
 select * from shoppy_product;
@@ -86,14 +86,14 @@ select  pid,
         upload_file as uploadFile, 
         source_file as sourceFile,
         pdate,
-        concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+        concat('http://43.200.183.25:9000/',upload_file->>'$[0]') as image,
         json_array(
-			concat('http://localhost:9000/',upload_file->>'$[0]'),
-            concat('http://localhost:9000/',upload_file->>'$[1]'),
-            concat('http://localhost:9000/',upload_file->>'$[2]')
+			concat('http://43.200.183.25:9000/',upload_file->>'$[0]'),
+            concat('http://43.200.183.25:9000/',upload_file->>'$[1]'),
+            concat('http://43.200.183.25:9000/',upload_file->>'$[2]')
         ) as imgList,
         json_arrayagg(
-			concat('http://localhost:9000/', jt.filename)
+			concat('http://43.200.183.25:9000/', jt.filename)
         ) as detailImgList
 from shoppy_product,
 	 json_table(shoppy_product.upload_file,'$[*]' 
@@ -109,14 +109,14 @@ select  pid,
                 upload_file as uploadFile, 
                 source_file as sourceFile,
                 pdate,
-                concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+                concat('http://43.200.183.25:9000/',upload_file->>'$[0]') as image,
                 json_array(
-                    concat('http://localhost:9000/',upload_file->>'$[0]'),
-                    concat('http://localhost:9000/',upload_file->>'$[1]'),
-                    concat('http://localhost:9000/',upload_file->>'$[2]')
+                    concat('http://43.200.183.25:9000/',upload_file->>'$[0]'),
+                    concat('http://43.200.183.25:9000/',upload_file->>'$[1]'),
+                    concat('http://43.200.183.25:9000/',upload_file->>'$[2]')
                 ) as imgList,
                 json_arrayagg(
-                            concat('http://localhost:9000/', jt.filename)
+                            concat('http://43.200.183.25:9000/', jt.filename)
                         ) as detailImgList
         from shoppy_product,
             json_table(shoppy_product.upload_file,'$[*]' 
@@ -134,7 +134,7 @@ select  pid,
 		pname,
         price,
         description,
-        concat('http://localhost:9000/',upload_file->>'$[0]') as image
+        concat('http://43.200.183.25:9000/',upload_file->>'$[0]') as image
 from shoppy_product
 where pid in (4, 4);      
 
@@ -190,7 +190,7 @@ select  sc.cid,
         sp.pname,
         sp.price,
         sp.description as info,
-        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+        concat('http://43.200.183.25:9000/', sp.upload_file->>'$[0]') as image        
 	from shoppy_cart sc,
 		 shoppy_member sm,
          shoppy_product sp
@@ -212,7 +212,7 @@ select  sc.cid,
         sp.price,
         format(sp.price,0) as sprice,
         sp.description as info,
-        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+        concat('http://43.200.183.25:9000/', sp.upload_file->>'$[0]') as image        
 	from shoppy_cart sc,
 		 shoppy_member sm,
          shoppy_product sp
@@ -266,7 +266,7 @@ select  sc.cid,
         sp.pname,
         sp.price,
         sp.description as info,
-        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+        concat('http://43.200.183.25:9000/', sp.upload_file->>'$[0]') as image        
 	from shoppy_cart sc,
 		 shoppy_member sm,
          shoppy_product sp
@@ -290,7 +290,7 @@ as
         sp.pname,
         sp.price,
         sp.description as info,
-        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+        concat('http://43.200.183.25:9000/', sp.upload_file->>'$[0]') as image        
 	from shoppy_cart sc,
             shoppy_member sm,
             shoppy_product sp
@@ -313,7 +313,7 @@ select  sc.cid,
 	sp.pname,
 	sp.price,
 	sp.description as info,
-	concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+	concat('http://43.200.183.25:9000/', sp.upload_file->>'$[0]') as image
 from shoppy_cart sc,
 	shoppy_member sm,
 	shoppy_product sp
@@ -377,7 +377,7 @@ select pid, brand, subject, price, upload_img, detail_imgs
 from product_kurly;
 
 select pid, brand, subject, price, upload_img, detail_imgs,
-        concat('http://localhost:9000/', detail_imgs->>'$[0]') as image
+        concat('http://43.200.183.25:9000/', detail_imgs->>'$[0]') as image
 from product_kurly;
 
 use hrdb2019;

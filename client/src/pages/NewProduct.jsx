@@ -15,7 +15,7 @@ export default function NewProduct() {
     const getFileName = (fileNames) => {
         setFnames(fileNames); 
         setPreviewList(fileNames.uploadFileName);
-        // setPreview(`http://localhost:9000/${fileNames.uploadFileName}`);   
+        // setPreview(`http://43.200.183.25:9000/${fileNames.uploadFileName}`);   
         // console.log('NewProduct fileNames===>> ', fileNames);        
     }
 
@@ -42,7 +42,7 @@ export default function NewProduct() {
             console.log('formData --> ', formData);
             
             axios   
-                .post('http://localhost:9000/product/new', formData)
+                .post('http://43.200.183.25:9000/product/new', formData)
                 .then(res => {
                     if(res.data.result_rows === 1) {
                         alert("상품이 등록되었습니다.");
@@ -91,7 +91,7 @@ export default function NewProduct() {
                         {/** 다중파일 preview */}
                         {
                             previewList && previewList.map((preview)=>
-                                <img src={`http://localhost:9000/${preview}`}  
+                                <img src={`http://43.200.183.25:9000/${preview}`}  
                                     alt="preview image"
                                     style={{width:'100px', height:'100px', margin:'5px'}} /> 
                             )

@@ -8,7 +8,7 @@ export default function Carts() {
         <div className="cart-container">
         <h2 className="cart-header"> 장바구니</h2>
                     <div className="cart-item" >
-                    <img src="http://localhost:9000/upload_files/1739169710642-393528773-1.jpg" alt="" />
+                    <img src="http://43.200.183.25:9000/upload_files/1739169710642-393528773-1.jpg" alt="" />
                     <div className="cart-item-details">
                         <p className="cart-item-title">코트</p>
                         <p className="cart-item-title">XS</p> 

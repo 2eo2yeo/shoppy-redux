@@ -14,7 +14,7 @@ as
         sp.pname,
         sp.price,
         sp.description as info,
-        concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image        
+        concat('http://43.200.183.25:9000/', sp.upload_file->>'$[0]') as image        
 	from shoppy_cart sc,
             shoppy_member sm,
             shoppy_product sp
@@ -37,7 +37,7 @@ select  sc.cid,
 	sp.pname,
 	sp.price,
 	sp.description as info,
-	concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
+	concat('http://43.200.183.25:9000/', sp.upload_file->>'$[0]') as image
 from shoppy_cart sc,
 	shoppy_member sm,
 	shoppy_product sp

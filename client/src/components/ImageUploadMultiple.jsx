@@ -18,7 +18,7 @@ export default function ImageUploadMultiple({getFileName}) {
             //서버전송 
             //파일업로드 제한없이 사용자가 선택한 갯수 만큼 전송==> ?maxFiles=${files.length}
             axios   
-                .post(`http://localhost:9000/uploads/multiple?maxFiles=${files.length}`, formData, {
+                .post(`http://43.200.183.25:9000/uploads/multiple?maxFiles=${files.length}`, formData, {
                     headers : { "Content-Type": "multipart/form-data" },
                 })
                 .then(res => {

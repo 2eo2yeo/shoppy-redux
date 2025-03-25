@@ -22,7 +22,7 @@ export const getLogout = () => (dispatch) => { // 비동기처리 안하므로 �
 // dispatch로 넘긴 것 안에는 비동기가 있다는 뜻
 export const getLogin = (formData) => async (dispatch) => {
 
-    const url = 'http://localhost:9000/member/login';
+    const url = 'http://43.200.183.25:9000/member/login';
     const data = formData;
 
     const loginResult = await axiosPost({url, data});
