@@ -1,28 +1,37 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { AuthContext } from '../auth/AuthContext.js';
-import { CartContext } from "../context/CartContext.js";
-import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../hooks/useCart.js";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import "../styles/cart.css";
+import { Link, useNavigate } from "react-router-dom";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { useSelector, useDispatch } from "react-redux";
+import { getCartList, clearCartList, updateCartList, deleteCartItem } from '../services/cartApi.js'
+
 
 export default function Carts() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext);
-    const { cartList, setCartList, cartCount, totalPrice } = useContext(CartContext);
-    const { getCartList, updateCartList, deleteCartItem } = useCart();
+    const isLoggedIn = useSelector(state => state.login.isLoggedIn); 
+    const cartCount = useSelector(state => state.cart.cartCount);
+    const cartList = useSelector(state => state.cart.cartList);
+    const totalPrice = useSelector(state => state.cart.totalPrice);
     const hasCheckedLogin = useRef(false);      
+
+    // const { deleteCartItem } =useCart();
+    // const { isLoggedIn } = useContext(AuthContext);
+    // const { setCartList, cartCount, totalPrice } = useContext(CartContext);
+    // const { getCartList, updateCartList, deleteCartItem } = useCart();
+
+
     
     useEffect(()=>{  
         if (hasCheckedLogin.current) return;  // true:로그인 상태 -->  블록 return
             hasCheckedLogin.current = true; 
 
         if(isLoggedIn) {
-            getCartList();
+            dispatch(getCartList());
         } else {  
             const select = window.confirm("로그인 서비스가 필요합니다. \n로그인 하시겠습니까?");
             select ?  navigate('/login') :  navigate('/');
-            setCartList([]);
+            dispatch(clearCartList())
         }
     } , [isLoggedIn]);
 
@@ -44,16 +53,16 @@ export default function Carts() {
                 </div>
                 <div className="cart-quantity">
                     <button onClick={() => {
-                        item.qty>1 && updateCartList(item.cid, "decrease")
+                        item.qty>1 && dispatch(updateCartList(item.cid, "decrease"))
                     }}>
                     -
                     </button>
                     <input type="text" value={item.qty} readOnly />
-                    <button onClick={() => {updateCartList(item.cid, "increase")}}>
+                    <button onClick={() => {dispatch(updateCartList(item.cid, "increase"))}}>
                     +
                     </button>
                 </div>
-                <button className="cart-remove" onClick={()=>{deleteCartItem(item.cid)}}>
+                <button className="cart-remove" onClick={()=>{dispatch(deleteCartItem(item.cid))}}>
                     <RiDeleteBin6Line />
                 </button>
                 </div> 

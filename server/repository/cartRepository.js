@@ -56,7 +56,7 @@ export const getCount = async({id}) => {
  */
 export const getItems = async({id}) => {
     const sql = `
-            select * from view_cart_list 
+            select * from shoppy_cart_list 
             where id = ?
     `;
     const [result] = await db.execute(sql, [id]);

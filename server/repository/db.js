@@ -4,10 +4,10 @@
 import mysql from 'mysql2';
 
 const pool = mysql.createPool({
-    host: 'localhost',
+    host: 'shoppy-redux-db.cjw8casuq6rz.ap-northeast-2.rds.amazonaws.com', //앤드포인트
     port: 3306,
-    user: 'root',
-    password: 'mysql1234',
+    user: 'admin',
+    password: 'adminshoppy1234',
     database: 'hrdb2019',
 });
 
